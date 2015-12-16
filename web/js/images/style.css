@@ -1,0 +1,39 @@
+BODY {
+	BACKGROUND-COLOR: #000000; MARGIN: 0px
+}
+#container {
+	BACKGROUND-IMAGE: url(bg.jpg); BACKGROUND-COLOR: #fedd92; BACKGROUND-REPEAT: repeat-x
+}
+#header {
+	BACKGROUND-IMAGE: url(swiss.jpg); BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: right top; HEIGHT: 200px
+}
+#logo {
+	BACKGROUND-IMAGE: url(logo.jpg); POSITION: relative; MARGIN: 0px auto; WIDTH: 500px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Arial, Helvetica, sans-serif; BACKGROUND-POSITION: center top; HEIGHT: 179px; COLOR: #000000; FONT-SIZE: 13px
+}
+#title {
+	POSITION: absolute; TOP: 80px; LEFT: 219px
+}
+#klok {
+	MARGIN: 0px auto; WIDTH: 1000px; HEIGHT: 360px
+}
+#new {
+	TEXT-ALIGN: center; FONT: 13px Arial; MARGIN-BOTTOM: 30px
+}
+#new A {
+	COLOR: #ff3300
+}
+#new A:hover {
+	TEXT-DECORATION: none
+}
+#adsense {
+	PADDING-BOTTOM: 20px; MARGIN: 0px auto; WIDTH: 800px; PADDING-TOP: 10px
+}
+#footer {
+	BACKGROUND-IMAGE: url(dno.gif); BACKGROUND-REPEAT: repeat-x; BACKGROUND-POSITION: 50% top; HEIGHT: 150px
+}
+#signature {
+	TEXT-ALIGN: center; FONT-FAMILY: Arial, Helvetica, sans-serif; COLOR: #ba9a60; FONT-SIZE: 11px
+}
+#signature P {
+	PADDING-TOP: 70px
+}
