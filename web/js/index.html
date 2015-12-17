@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 	<meta charset="utf-8">
 	<title>Slow Time-an app of time management</title>
@@ -9,14 +8,17 @@
 	<link rel="stylesheet" href="../css/animate.css">
 	<link rel="stylesheet" href="../css/font-awesome.min.css">
 	<link rel="stylesheet" href="../css/templatemo-style.css">
-
+	<link rel="stylesheet" href="style3.css">
 	<!-- jQuery -->
 	<script src="jquery-1.11.0.min.js"></script>
 	<script src="jquery-migrate-1.2.1.min.js"></script>
+	<script src="moment.min.js"></script>
 	<script async type="application/dart" src="main.dart"></script>
+	<script async type="application/dart" src="clock.dart"></script>
+	<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.7.2/jquery.min.js"></script>
 </head>
 <body>
-		
+
 	<!-- HEADER -->
 	<div class="fluid-container">
 		<header class="site-header">
@@ -42,7 +44,7 @@
 			</div>
 		</header> <!-- .site-header -->
 	</div> <!-- .fluid-container -->
-	
+
 	<!-- WELCOME TEXT -->
 	<div class="main-content">
 	<div class="fluid-container">
@@ -122,39 +124,181 @@
 				</div>
 			</div>
 		</div>
-			    <META name=copyright content="Copyright  2008 Istok Pavlovic"><LINK
-					rel="shortcut icon" href="alarmclock.ico"><LINK rel=stylesheet type=text/css
-																	href="../../web/js/images/style.css">
-			    <SCRIPT type=text/javascript
-					src="../../web/js/images/AC_RunActiveContent.js"></SCRIPT>
 		<div class="section-facts">
 			<div class="row">
-					<DIV id=klok>
-				    <SCRIPT type=text/javascript>
-					AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','1000','height','360','src','klok','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','wmode','transparent','menu','false','movie','klok' ); //end AC code
-				    </SCRIPT>
-				    <NOSCRIPT>
-					<OBJECT
-							codeBase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0"
-							classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000 width=1000 height=360><PARAM NAME="movie" VALUE="images/klok.swf"><PARAM NAME="quality" VALUE="high"><PARAM NAME="wmode" VALUE="transparent"><PARAM NAME="menu" VALUE="false">
-						<embed src="../../web/js/images/klok.swf" width="1000"
-							   height="360" quality="high"
-							   pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"
-							   type="application/x-shockwave-flash" wmode="transparent" menu="false"></embed>
-					</OBJECT></NOSCRIPT></DIV><!-- <div id="new">Folks, check out this funny video on YouTube: <a href="http://www.youtube.com/watch?v=kQ-l5PlDa-k" target="_blank">The world's biggest alarm clock.</a></div> -->
-			        <DIV id=adsense>
-				    <script type="text/javascript"><!--
-				    google_ad_client = "pub-1484976153183127";
-				    google_ad_slot = "9320512928";
-				    google_ad_width = 728;
-				    google_ad_height = 15;
-				    //-->
-				    </script>
-				    <script type="text/javascript"
-						src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-				    </script>
-			    </DIV>
-			</div>
+				<div id="main">
+					<div class="demo">
+						<div id="clock" class="light">
+							<div class="display">
+								<div class="date"></div>
+								<div class="alarm"></div>
+								<div class="digits"></div>
+							</div>
+						</div>
+					</div>
+					<div class="overlay" id="settime">
+						<div id="alarm-dialog">
+							<h2>SET THE TIME</h2>
+							<label class="hours">
+								H
+								<input type="number" value="0" min="0" />
+							</label>
+							<label class="minutes">
+								M
+								<input type="number" value="0" min="0" />
+							</label>
+							<label class="seconds">
+								S
+								<input type="number" value="0" min="0" />
+							</label>
+							<div class="button-holder">
+								<a id="alarm-set" class="button blue">SET</a>
+							</div>
+							<a class="close"></a>
+						</div>
+					</div>
+					<div class="overlay" id="timeisup">
+						<div id="time-is-up">
+							<h2>TIME IS UP!</h2>
+							<div class="button-holder">
+								<a href="#clients"class="button blue">CLOSE</a>
+							</div>
+						</div>
+					</div>
+					<audio id="ring" preload>
+						<source src="audio/ticktac.mp3" type="audio/mpeg" />
+						<source src="audio/ticktac.ogg" type="audio/ogg" />
+					</audio>
+				</div>
+				<script>
+					$(function(){
+						var clock = $('#clock');
+						//定义数字数组0-9
+						var digit_to_name = ['zero','one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+						//定义星期
+						var weekday = ['SUN','MON','TUES','WED','THURS','FRI','SAT'];
+
+						var digits = {};
+
+						//定义时分秒位置
+						var positions = [
+							'h1', 'h2', ':', 'm1', 'm2', ':', 's1', 's2'
+						];
+
+						//构建数字时钟的时分秒
+
+						var digit_holder = clock.find('.digits');
+
+						$.each(positions, function(){
+
+							if(this == ':'){
+								digit_holder.append('<div class="dots">');
+							}
+							else{
+
+								var pos = $('<div>');
+
+								for(var i=1; i<8; i++){
+									pos.append('<span class="d' + i + '">');
+								}
+
+								digits[this] = pos;
+
+								digit_holder.append(pos);
+							}
+
+						});
+
+						var alarm_counter = -1;
+
+
+						// 让时钟跑起来
+						(function update_time(){
+
+							//调用moment.js来格式化时间
+							var now = moment().format("HHmmss");
+
+							digits.h1.attr('class', digit_to_name[now[0]]);
+							digits.h2.attr('class', digit_to_name[now[1]]);
+							digits.m1.attr('class', digit_to_name[now[2]]);
+							digits.m2.attr('class', digit_to_name[now[3]]);
+							digits.s1.attr('class', digit_to_name[now[4]]);
+							digits.s2.attr('class', digit_to_name[now[5]]);
+
+							var date = moment().format("YYYY.MM.DD.");
+							var week = weekday[moment().format('d')];
+							$(".date").html(date + ' ' + week);
+
+							//闹钟
+							var alarm = $(".alarm");
+							if(alarm_counter > 0){
+								alarm_counter--;
+								alarm.addClass('active');
+							}
+							else if(alarm_counter == 0){
+
+								$("#timeisup").fadeIn();
+								//在支持html audio的浏览器上播放声音
+								try{
+									$("#ring")[0].play();
+								}
+								catch(e){}
+
+								alarm_counter--;
+								alarm.removeClass('active');
+							}
+							else{
+								alarm.removeClass('active');
+							}
+
+							// 每秒钟运行一次
+							setTimeout(update_time, 1000);
+						})();
+
+						$('.alarm').click(function(){
+							$("#settime").show();
+						});
+
+						$('a.close').click(function(){
+							$("#settime").hide();
+						});
+
+						$("#alarm-set").click(function(){
+							var valid = true, after = 0,
+									to_seconds = [3600, 60, 1];
+
+							$("#settime").find('input').each(function(i){
+								if(this.validity && !this.validity.valid){
+
+									valid = false;
+									this.focus();
+
+									return false;
+								}
+								after += to_seconds[i] * parseInt(parseInt(this.value));
+							});
+
+							if(!valid){
+								alert('请输入有效数字!');
+								return;
+							}
+
+							if(after < 1){
+								alert('请输入有效的时间!');
+								return;
+							}
+
+							alarm_counter = after;
+							$("#settime").hide();
+						});
+
+						$("#timeisup").click(function(){
+							$("#timeisup").fadeOut();
+							$("#settime").find('input').attr('value','0');
+						});
+					});
+				</script>
+
 		</div>
 	</div>
 
