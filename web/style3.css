@@ -18,7 +18,7 @@
 	width:16px;
 	height:16px;
 	bottom:20px;
-	background:url(alarm.jpg);
+	background:url(img/alarm.jpg);
 	position:absolute;
 	opacity:0.2;
 	cursor:pointer
@@ -341,7 +341,7 @@ a.button:hover{
 #alarm-dialog .close{
 	width: 36px;
 	height: 36px;
-	background: url(close.png);
+	background: url(img/close.png);
 	position: absolute;
 	top: -18px;
 	right: -18px;

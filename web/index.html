@@ -5,14 +5,14 @@
 	<meta charset="utf-8">
 	<title>Slow Time-an app of time management</title>
 	<!-- Main Stylesheet -->
-	<link rel="stylesheet" href="../css/animate.css">
-	<link rel="stylesheet" href="../css/font-awesome.min.css">
-	<link rel="stylesheet" href="../css/templatemo-style.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/templatemo-style.css">
 	<link rel="stylesheet" href="style3.css">
 	<!-- jQuery -->
-	<script src="jquery-1.11.0.min.js"></script>
-	<script src="jquery-migrate-1.2.1.min.js"></script>
-	<script src="moment.min.js"></script>
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="js/moment.min.js"></script>
 	<script async type="application/dart" src="main.dart"></script>
 	<script async type="application/dart" src="clock.dart"></script>
 	<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.7.2/jquery.min.js"></script>
@@ -44,14 +44,13 @@
 			</div>
 		</header> <!-- .site-header -->
 	</div> <!-- .fluid-container -->
-
 	<!-- WELCOME TEXT -->
 	<div class="main-content">
 	<div class="fluid-container">
 		<div class="section-welcome">
 			<div class="row">
             	<div  class="col-md-4 text-center" >
-					<input id = 'getWords1'type='image'class="img-responsive animated fadeInLeft">
+					<a href="#portfolio"><input id = 'getWords1'type='image'class="img-responsive animated fadeInLeft"></a>
 			    </div>
 				<div class="col-md-8 text-center welcome-section">
                 	<br>
@@ -166,8 +165,8 @@
 						</div>
 					</div>
 					<audio id="ring" preload>
-						<source src="audio/ticktac.mp3" type="audio/mpeg" />
-						<source src="audio/ticktac.ogg" type="audio/ogg" />
+						<source src="js/audio/ticktac.mp3" type="audio/mpeg" />
+						<source src="js/audio/ticktac.ogg" type="audio/ogg" />
 					</audio>
 				</div>
 				<script>
@@ -279,12 +278,12 @@
 							});
 
 							if(!valid){
-								alert('请输入有效数字!');
+								alert('Please enter a valid number!');
 								return;
 							}
 
 							if(after < 1){
-								alert('请输入有效的时间!');
+								alert('Please enter a valid time!');
 								return;
 							}
 
@@ -298,7 +297,9 @@
 						});
 					});
 				</script>
-
+				<div class="text-center">
+					<p class="service-text">NOTE; If you close this page, the alarm function will be terminated.</p>
+				</div>
 		</div>
 	</div>
 
@@ -317,7 +318,7 @@
 			<div class="row portfolio-holder">
 				<article class="portfolio col-md-4 col-sm-6 col-xs-12">
 					<div  class="entry-thumbnail">
-						<img src="../img/portfolio/1.jpg" alt="">
+						<img src="img/portfolio/1.jpg" alt="">
 					</div>
 					<div class="portfolio-overlay first">
 						<a href="#"><h4 id="getWords2"class="entry-title">Take time by the forelock.</h4></a>
@@ -325,7 +326,7 @@
 				</article>
 				<article class="portfolio col-md-4 col-sm-6 col-xs-12">
 					<div class="entry-thumbnail">
-						<img src="../img/portfolio/2.jpg" alt="">
+						<img src="img/portfolio/2.jpg" alt="">
 					</div>
 					<div class="portfolio-overlay second">
 						<a href="#"><h4 id="getWords3"class="entry-title">Time and I against any two.</h4></a>
@@ -333,7 +334,7 @@
 				</article>
 				<article class="portfolio col-md-4 col-sm-6 col-xs-12">
 					<div class="entry-thumbnail">
-						<img src="../img/portfolio/3.jpg" alt="">
+						<img src="img/portfolio/3.jpg" alt="">
 					</div>
 					<div class="portfolio-overlay third">
 						<a href="#"><h4 id="getWords4"class="entry-title">Tomorrow never comes.</h4></a>
@@ -341,7 +342,7 @@
 				</article>
 				<article class="portfolio col-md-4 col-sm-6 col-xs-12">
 					<div class="entry-thumbnail">
-						<img src="../img/portfolio/4.jpg" alt="">
+						<img src="img/portfolio/4.jpg" alt="">
 					</div>
 					<div class="portfolio-overlay fourth">
 						<a href="#"><h4 id="getWords5"class="entry-title">Time will tell.</h4></a>
@@ -349,7 +350,7 @@
 				</article>
 				<article class="portfolio col-md-4 col-sm-6 col-xs-12">
 					<div class="entry-thumbnail">
-						<img src="../img/portfolio/5.jpg" alt="">
+						<img src="img/portfolio/5.jpg" alt="">
 					</div>
 					<div class="portfolio-overlay fifth">
 						<a href="#"><h4 id="getWords6"class="entry-title">Time and tide wait for no man.</h4></a>
@@ -357,7 +358,7 @@
 				</article>
 				<article class="portfolio col-md-4 col-sm-6 col-xs-12">
 					<div class="entry-thumbnail">
-						<img src="../img/portfolio/6.jpg" alt="">
+						<img src="img/portfolio/6.jpg" alt="">
 					</div>
 					<div class="portfolio-overlay sixth">
 						<a href="#"><h4 id="getWords7"class="entry-title">Time is money.</h4></a>
@@ -396,6 +397,7 @@
 							<h4>Three</h4>
 						</li>
 					</ul>
+					<a href="#facts"><h4>RETURN</h4></a>
 				</div>
 			</div>
 		</div>
@@ -411,15 +413,15 @@
 			</div>
 		</div>
 		<div class="section-contact">
-			<div class="row">
+			<div class="row"id="home1">
 				<div class="col-md-5 col-sm-12 col-xs-12">
 							<div id="form_text">
 								<p>name<input id="user_name" type="text" placeholder="name" ></p>
 								<p>password<input id="user_password" type="text" placeholder="password"></p>
 							</div>
 							<div>
-								<input id="register" type='image' src="../img/register.png" >
-								<input id="login" type='image' src="../img/login.png">
+								<input id="register" type='image' src="img/register.png" >
+								<input id="login" type='image' src="img/login.png">
 							</div>
 				</div>
 				<div class="contact-map">
@@ -437,7 +439,14 @@
 					</div>
 				</div>
 			</div>
-		</div>
+			<div  class="text-center" id="home2">
+				<div>
+					<p>welcome to the SLOW TIME!</p>
+				</div>
+				<div class="button-holder"id = "home3">
+					<a href="#contact"class="button-grey animated fadeInUp">Login out</a>
+				</div>
+		    </div>
 		</div>
 	</div>
 
@@ -459,14 +468,13 @@
 		</footer>
 	</div>
 	</div>
-	
 
-	<!-- Plugins -->
-	<script src="bootstrap.js"></script>
-	<script src="plugins.js"></script>
-	<script src="custom.js"></script>
+	<script type="application/dart" src="index.dart"></script>
+	<script src="packages/browser/dart.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/custom.js"></script>
 
-	<!-- Google Map -->
 
 
 

@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/bin/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/.idea/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/css/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/fonts/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/img/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/img/portfolio/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/js/audio/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/js/images/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/js/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/web/packages" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="application" />

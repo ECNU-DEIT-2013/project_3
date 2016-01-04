@@ -14,7 +14,7 @@ ImageElement p6 = querySelector('#getWords6');
 ImageElement p7 = querySelector('#getWords7');
 void main() {
   p1 = querySelector('#getWords1');
-  p1.src="../img/portfolio/1.jpg";
+  p1.src="img/portfolio/1.jpg";
   querySelector('#getWords2').onClick.listen(makeRequest1);
   querySelector('#getWords3').onClick.listen(makeRequest2);
   querySelector('#getWords4').onClick.listen(makeRequest3);
@@ -24,20 +24,20 @@ void main() {
 }
 
 void makeRequest1(Event e) {
-  p1.src="../img/portfolio/1.jpg";
+  p1.src="img/portfolio/1.jpg";
 }
 void makeRequest2(Event e) {
-  p1.src="../img/portfolio/2.jpg";
+  p1.src="img/portfolio/2.jpg";
 }
 void makeRequest3(Event e) {
-  p1.src="../img/portfolio/3.jpg";
+  p1.src="img/portfolio/3.jpg";
 }
 void makeRequest4(Event e) {
-  p1.src="../img/portfolio/4.jpg";
+  p1.src="img/portfolio/4.jpg";
 }
 void makeRequest5(Event e) {
-  p1.src="../img/portfolio/5.jpg";
+  p1.src="img/portfolio/5.jpg";
 }
 void makeRequest6(Event e) {
-  p1.src="../img/portfolio/6.jpg";
+  p1.src="img/portfolio/6.jpg";
 }
