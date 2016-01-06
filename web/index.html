@@ -33,11 +33,12 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a class="link-service" href="#services">Functions</a></li>
+						<li><a class="link-service" href="#services"id="home6">Functions</a></li>
 						<li><a class="link-facts" href="#facts">Clock</a></li>
 						<li><a class="link-portfolio" href="#portfolio">Skins</a></li>
 						<li><a class="link-clients" href="#clients">Remind</a></li>
-						<li><a class="link-contact" href="#contact">Login</a></li>
+						<li><a class="link-contact" href="#contact"id="home4">Login</a></li>
+						<li><a class="link-contact" href="#Home"id="home5">History</a></li>
 					</ul>
 				</div>
 				</div>
@@ -52,7 +53,7 @@
             	<div  class="col-md-4 text-center" >
 					<a href="#portfolio"><input id = 'getWords1'type='image'class="img-responsive animated fadeInLeft"></a>
 			    </div>
-				<div class="col-md-8 text-center welcome-section">
+				<div class="col-md-8 text-center welcome-section"id="home8">
                 	<br>
 					<h2 class="animated fadeInDown">A super good time management tool</h2>
 					<br>
@@ -60,11 +61,19 @@
                     <br>
 					<a href="#services" class="button-grey animated fadeInUp">About us</a>
 				</div>
+				<div class="col-md-8 text-center welcome-section"id="home9">
+					<br>
+					<h2 class="animated fadeInDown">Welcome to your slow time!</h2>
+					<br>
+					<p class="animated fadeInRight">You can make your time slow down by yourself.</p>
+					<br>
+					<a href="#facts" class="button-grey animated fadeInUp">Click here</a>
+				</div>
 			</div>
 		</div>
 	</div>
 	<!-- SERVICES -->
-	<div class="fluid-container">
+	<div class="fluid-container"id="home7">
 		<div class="section-services" id="services">
 			<div class="row">
 				<div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 text-center">
@@ -114,194 +123,224 @@
 		</div>
 	</div>
 
-	<!-- FUN FACTS -->
-	<div class="fluid-container animated flipInX" id="facts">
-		<div class="row">
-			<div class="col-md-12 text-right">
-				<div class="section-header facts-header">
-					<h3>Timer And Clock</h3>
+		<div class="fluid-container animated flipInX" id="facts">
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<div class="section-header facts-header">
+						<h3>Timer And Clock</h3>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="section-facts">
-			<div class="row">
-				<div id="main">
-					<div class="demo">
-						<div id="clock" class="light">
-							<div class="display">
-								<div class="date"></div>
-								<div class="alarm"></div>
-								<div class="digits"></div>
+			<div class="section-facts">
+				<div class="row">
+					<div id="main">
+						<div class="demo">
+							<div id="clock" class="light">
+								<div class="display">
+									<div class="date"></div>
+									<div class="alarm"></div>
+									<div class="digits"></div>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="overlay" id="settime">
-						<div id="alarm-dialog">
-							<h2>SET THE TIME</h2>
-							<label class="hours">
-								H
-								<input type="number" value="0" min="0" />
-							</label>
-							<label class="minutes">
-								M
-								<input type="number" value="0" min="0" />
-							</label>
-							<label class="seconds">
-								S
-								<input type="number" value="0" min="0" />
-							</label>
-							<div class="button-holder">
-								<a id="alarm-set" class="button blue">SET</a>
-							</div>
-							<a class="close"></a>
-						</div>
-					</div>
-					<div class="overlay" id="timeisup">
-						<div id="time-is-up">
-							<h2>TIME IS UP!</h2>
-							<div class="button-holder">
-								<a href="#clients"class="button blue">CLOSE</a>
+						<div class="overlay" id="settime">
+							<div id="alarm-dialog">
+								<h2>SET THE TIME</h2>
+								<label class="hours">
+									H
+									<input type="number" value="0" min="0" />
+								</label>
+								<label class="minutes">
+									M
+									<input type="number" value="0" min="0" />
+								</label>
+								<label class="seconds">
+									S
+									<input type="number" value="0" min="0" />
+								</label>
+								<div class="button-holder">
+									<a id="alarm-set" class="button blue1">SET</a>
+								</div>
+								<a class="close"></a>
 							</div>
 						</div>
+						<div class="overlay" id="timeisup">
+							<div id="time-is-up">
+								<h2>TIME IS UP!</h2>
+								<div class="button-holder">
+									<div  id=close1><a href="#clients" class="button blue2" id="close">CLOSE</a> </div>
+									<div  id=success1><a href="#clients" class="button blue2" id="success">SUCCESS</a> </div>
+									<div  id=failure1><a href="#clients" class="button blue3" id="failure">FAILURE</a></div>
+									<div  id=delay1><a class="button blue4" id="delay">DELAY</a></div>
+								</div>
+							</div>
+						</div>
+						<audio id="ring" preload>
+							<source src="js/audio/ticktac.mp3" type="audio/mpeg" />
+							<source src="js/audio/ticktac.ogg" type="audio/ogg" />
+						</audio>
 					</div>
-					<audio id="ring" preload>
-						<source src="js/audio/ticktac.mp3" type="audio/mpeg" />
-						<source src="js/audio/ticktac.ogg" type="audio/ogg" />
-					</audio>
-				</div>
-				<script>
-					$(function(){
-						var clock = $('#clock');
-						//定义数字数组0-9
-						var digit_to_name = ['zero','one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-						//定义星期
-						var weekday = ['SUN','MON','TUES','WED','THURS','FRI','SAT'];
+					<script>
+						$(function(){
+							var clock = $('#clock');
+							//定义数字数组0-9
+							var digit_to_name = ['zero','one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+							//定义星期
+							var weekday = ['SUN','MON','TUES','WED','THURS','FRI','SAT'];
 
-						var digits = {};
+							var digits = {};
 
-						//定义时分秒位置
-						var positions = [
-							'h1', 'h2', ':', 'm1', 'm2', ':', 's1', 's2'
-						];
+							//定义时分秒位置
+							var positions = [
+								'h1', 'h2', ':', 'm1', 'm2', ':', 's1', 's2'
+							];
 
-						//构建数字时钟的时分秒
+							//构建数字时钟的时分秒
 
-						var digit_holder = clock.find('.digits');
+							var digit_holder = clock.find('.digits');
 
-						$.each(positions, function(){
+							$.each(positions, function(){
 
-							if(this == ':'){
-								digit_holder.append('<div class="dots">');
-							}
-							else{
+								if(this == ':'){
+									digit_holder.append('<div class="dots">');
+								}
+								else{
 
-								var pos = $('<div>');
+									var pos = $('<div>');
 
-								for(var i=1; i<8; i++){
-									pos.append('<span class="d' + i + '">');
+									for(var i=1; i<8; i++){
+										pos.append('<span class="d' + i + '">');
+									}
+
+									digits[this] = pos;
+
+									digit_holder.append(pos);
 								}
 
-								digits[this] = pos;
-
-								digit_holder.append(pos);
-							}
-
-						});
-
-						var alarm_counter = -1;
-
-
-						// 让时钟跑起来
-						(function update_time(){
-
-							//调用moment.js来格式化时间
-							var now = moment().format("HHmmss");
-
-							digits.h1.attr('class', digit_to_name[now[0]]);
-							digits.h2.attr('class', digit_to_name[now[1]]);
-							digits.m1.attr('class', digit_to_name[now[2]]);
-							digits.m2.attr('class', digit_to_name[now[3]]);
-							digits.s1.attr('class', digit_to_name[now[4]]);
-							digits.s2.attr('class', digit_to_name[now[5]]);
-
-							var date = moment().format("YYYY.MM.DD.");
-							var week = weekday[moment().format('d')];
-							$(".date").html(date + ' ' + week);
-
-							//闹钟
-							var alarm = $(".alarm");
-							if(alarm_counter > 0){
-								alarm_counter--;
-								alarm.addClass('active');
-							}
-							else if(alarm_counter == 0){
-
-								$("#timeisup").fadeIn();
-								//在支持html audio的浏览器上播放声音
-								try{
-									$("#ring")[0].play();
-								}
-								catch(e){}
-
-								alarm_counter--;
-								alarm.removeClass('active');
-							}
-							else{
-								alarm.removeClass('active');
-							}
-
-							// 每秒钟运行一次
-							setTimeout(update_time, 1000);
-						})();
-
-						$('.alarm').click(function(){
-							$("#settime").show();
-						});
-
-						$('a.close').click(function(){
-							$("#settime").hide();
-						});
-
-						$("#alarm-set").click(function(){
-							var valid = true, after = 0,
-									to_seconds = [3600, 60, 1];
-
-							$("#settime").find('input').each(function(i){
-								if(this.validity && !this.validity.valid){
-
-									valid = false;
-									this.focus();
-
-									return false;
-								}
-								after += to_seconds[i] * parseInt(parseInt(this.value));
 							});
 
-							if(!valid){
-								alert('Please enter a valid number!');
-								return;
-							}
+							var alarm_counter = -1;
 
-							if(after < 1){
-								alert('Please enter a valid time!');
-								return;
-							}
 
-							alarm_counter = after;
-							$("#settime").hide();
+							// 让时钟跑起来
+							(function update_time(){
+
+								//调用moment.js来格式化时间
+								var now = moment().format("HHmmss");
+
+								digits.h1.attr('class', digit_to_name[now[0]]);
+								digits.h2.attr('class', digit_to_name[now[1]]);
+								digits.m1.attr('class', digit_to_name[now[2]]);
+								digits.m2.attr('class', digit_to_name[now[3]]);
+								digits.s1.attr('class', digit_to_name[now[4]]);
+								digits.s2.attr('class', digit_to_name[now[5]]);
+
+								var date = moment().format("YYYY.MM.DD.");
+								var week = weekday[moment().format('d')];
+								$(".date").html(date + ' ' + week);
+
+								//闹钟
+								var alarm = $(".alarm");
+								if(alarm_counter > 0){
+									alarm_counter--;
+									alarm.addClass('active');
+								}
+								else if(alarm_counter == 0){
+
+									$("#timeisup").fadeIn();
+									//在支持html audio的浏览器上播放声音
+									try{
+										$("#ring")[0].play();
+									}
+									catch(e){}
+
+									alarm_counter--;
+									alarm.removeClass('active');
+								}
+								else{
+									alarm.removeClass('active');
+								}
+
+								// 每秒钟运行一次
+								setTimeout(update_time, 1000);
+							})();
+
+							$('.alarm').click(function(){
+								$("#settime").show();
+							});
+
+							$('a.close').click(function(){
+								$("#settime").hide()
+							});
+
+							$('a.success').click(function(){
+								$("#settime").hide();
+							});
+
+							$('a.failure').click(function(){
+								$("#settime").show();
+							});
+
+							$('a.delay').click(function(){
+								$("#settime").hide();
+							});
+
+							$("#alarm-set").click(function(){
+								var valid = true, after = 0,
+										to_seconds = [3600, 60, 1];
+
+								$("#settime").find('input').each(function(i){
+									if(this.validity && !this.validity.valid){
+
+										valid = false;
+										this.focus();
+
+										return false;
+									}
+									after += to_seconds[i] * parseInt(parseInt(this.value));
+								});
+
+								if(!valid){
+									alert('Please enter a valid number!');
+									return;
+								}
+
+								if(after < 1){
+									alert('Please enter a valid time!');
+									return;
+								}
+
+								alarm_counter = after;
+								$("#settime").hide();
+							});
+
+							$("#close1").click(function(){
+								$("#timeisup").fadeOut();
+								$("#settime").find('input').attr('value','0');
+							});
+
+							$("#success1").click(function(){
+								$("#timeisup").fadeOut();
+								$("#settime").find('input').attr('value','0');
+							});
+
+							$("#failure1").click(function(){
+								$("#timeisup").fadeOut();
+								$("#settime").find('input').attr('value','0');
+							});
+
+							$("#delay1").click(function(){
+								$("#timeisup").fadeOut();
+								$("#settime").find('input').attr('value','0');
+								$("#settime").show();
+							});
 						});
-
-						$("#timeisup").click(function(){
-							$("#timeisup").fadeOut();
-							$("#settime").find('input').attr('value','0');
-						});
-					});
-				</script>
-				<div class="text-center">
-					<p class="service-text">NOTE; If you close this page, the alarm function will be terminated.</p>
+					</script>
+					<div class="text-center">
+						<p class="service-text">NOTE; If you close this page, the alarm function will be terminated.</p>
+					</div>
 				</div>
-		</div>
-	</div>
+			</div>
 
 
 	
@@ -380,9 +419,6 @@
 		<div class="section-clients">
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<div class="client-icon">
-						<i class="i fa fa-quote-left"></i>
-					</div>
 					<ul class="client-slide">
 						<li>
 							<p>The handsome man is already reading, while the ugly man is lazy. </p>
@@ -403,6 +439,73 @@
 		</div>
 	</div>
 
+	<div class="fluid-container" id="Home">
+			<div class="row">
+				<div class="col-md-12 text-left">
+					<div class="section-header contact-header">
+						<h3>history and home</h3>
+					</div>
+				</div>
+			</div>
+			<div class="section-contact">
+				<div class="row">
+					<div class="col-md-3 col-sm-6 col-xs-12 col-lg-3 text-center">
+						<div class="counter-item">
+							<div class="counter-inner">
+								<div class="counter-body">
+									<h2 class="start-count" data-count="0">0</h2>
+									<h6>total</h6>
+									<div class="end-count"></div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- .counter-item -->
+					<div class="col-md-3 col-sm-6 col-xs-12 col-lg-3 text-center">
+						<div class="counter-item">
+							<div class="counter-inner">
+								<div class="counter-body">
+									<h2 class="start-count" data-count="0">0</h2>
+									<h6>success</h6>
+									<div class="end-count"></div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- .counter-item -->
+					<div class="col-md-3 col-sm-6 col-xs-12 col-lg-3 text-center">
+						<div class="counter-item">
+							<div class="counter-inner">
+								<div class="counter-body">
+									<h2 class="start-count" data-count="0">0</h2>
+									<h6>failure</h6>
+									<div class="end-count"></div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- .counter-item -->
+					<div class="col-md-3 col-sm-6 col-xs-12 col-lg-3 text-center">
+						<div class="counter-item">
+							<div class="counter-inner">
+								<div class="counter-body">
+									<h2 class="start-count" data-count="0">0</h2>
+									<h6>delay</h6>
+									<div class="end-count"></div>
+								</div>
+							</div>
+						</div>
+					</div> <!-- .counter-item -->
+					<div  class="text-center" id="home2">
+						<br> </br>
+						<br> </br>
+						<br> </br>
+						<br> </br>
+						<div class="button-holder"id = "home3">
+							<a href="#contact"class="button-grey animated fadeInUp">Login out</a>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
 	<!-- CONTACT US -->
 	<div class="fluid-container" id="contact">
 		<div class="row">
@@ -421,7 +524,7 @@
 							</div>
 							<div>
 								<input id="register" type='image' src="img/register.png" >
-								<input id="login" type='image' src="img/login.png">
+								<a href="#"><input id="login" type='image' src="img/login.png"></a>
 							</div>
 				</div>
 				<div class="contact-map">
@@ -439,16 +542,11 @@
 					</div>
 				</div>
 			</div>
-			<div  class="text-center" id="home2">
-				<div>
-					<p>welcome to the SLOW TIME!</p>
-				</div>
-				<div class="button-holder"id = "home3">
-					<a href="#contact"class="button-grey animated fadeInUp">Login out</a>
-				</div>
-		    </div>
 		</div>
 	</div>
+
+
+
 
 	<!-- FOOTER -->
 	<div class="fluid-container">
